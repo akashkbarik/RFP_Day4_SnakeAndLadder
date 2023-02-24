@@ -21,13 +21,15 @@ public class SnakeAndLadder {
     static int Calculate_ladder(int dice, int player) {
         System.out.println("ladder = " + dice);
         int temp = player + dice;
-
-        player = temp;
-
+        if (temp <= 100)
+            player = temp;
+        else if (temp > 100) {
+            System.out.println("oops! its " + temp + " you cant go ahead. 100 is your dead end .");
+        }
         return player;
     }
 
-    static int calculate_player(int player) {
+    static int Calculate_player(int player) {
         System.out.println("current points of player = " + player);
         int dice_number = random_value(6);
         System.out.println("dice number = " + dice_number);
@@ -49,7 +51,7 @@ public class SnakeAndLadder {
     public static void main(String[] args) {
         while (PLAYER_POSITION < 100) {
 
-            PLAYER_POSITION = calculate_player(PLAYER_POSITION);
+            PLAYER_POSITION = Calculate_player(PLAYER_POSITION);
             System.out.println("points of player 1 is " + PLAYER_POSITION);
             if (PLAYER_POSITION == 100) {
                 System.out.println("player 1 won the match");
