@@ -4,14 +4,14 @@ public class SnakeAndLadder {
     static int PLAYER_POSITION = 0;
 
     static int random_value(int max) {
-        int dice_number = (int) (Math.floor(Math.random() * 10) % max) + 1;
-        return dice_number;
+        return (int) (Math.floor(Math.random() * 10) % max) + 1;
     }
 
     static int Calculate_snake(int dice, int player) {
         System.out.println("Snake = " + dice);
         int temp = player - dice;
         if (temp < 0) {
+            player = 0;
         } else {
             player = temp;
         }
@@ -21,13 +21,13 @@ public class SnakeAndLadder {
     static int Calculate_ladder(int dice, int player) {
         System.out.println("ladder = " + dice);
         int temp = player + dice;
-        if (temp <= 100) {
-            player = temp;
-        }
+
+        player = temp;
+
         return player;
     }
 
-    static int Calculate_player(int player) {
+    static int calculate_player(int player) {
         System.out.println("current points of player = " + player);
         int dice_number = random_value(6);
         System.out.println("dice number = " + dice_number);
@@ -47,7 +47,13 @@ public class SnakeAndLadder {
     }
 
     public static void main(String[] args) {
-        System.out.println("position of player is" + Calculate_player(PLAYER_POSITION));
+        while (PLAYER_POSITION < 100) {
 
+            PLAYER_POSITION = calculate_player(PLAYER_POSITION);
+            System.out.println("points of player 1 is " + PLAYER_POSITION);
+            if (PLAYER_POSITION == 100) {
+                System.out.println("player 1 won the match");
+            }
+        }
     }
 }
