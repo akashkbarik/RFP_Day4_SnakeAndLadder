@@ -2,6 +2,7 @@ package Day4.asssignments.SnakeAndLadder;
 
 public class SnakeAndLadder {
     static int PLAYER_POSITION = 0;
+    static int count;
 
     static int random_value(int max) {
         return (int) (Math.floor(Math.random() * 10) % max) + 1;
@@ -52,10 +53,12 @@ public class SnakeAndLadder {
         while (PLAYER_POSITION < 100) {
 
             PLAYER_POSITION = Calculate_player(PLAYER_POSITION);
-            System.out.println("points of player 1 is " + PLAYER_POSITION);
+            System.out.println("total points of player : " + PLAYER_POSITION);
             if (PLAYER_POSITION == 100) {
-                System.out.println("player 1 won the match");
+                System.out.println("player has won the match");
             }
+            count += 1;
+            System.out.println("total number of times dice was played : "+count);
         }
     }
 }
